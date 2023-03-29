@@ -18,7 +18,11 @@ def geog_location(url):
     # screenshot folder
     old_path = '/Users/emmakrentz/Downloads/screenshots/'
     # cleaned image folder
-    new_path = '/Users/emmakrentz/Downloads/geoguessr data/'
+    new_path = '/Users/emmakrentz/Downloads/data science practice/geoguessr/geoguessr data/'
+    # resizing images at 2% original size for analysis
+    resized_path1 = '/Users/emmakrentz/Downloads/data science practice/geoguessr/resized data (58,27)/'
+    # resizing images at 4% original size for analysis
+    resized_path2 = '/Users/emmakrentz/Downloads/data science practice/geoguessr/resized data (115,54)/'
     
     # crop images to correct geoguessr image size
     # rename each screenshot with its location coordinates, then move out of screenshot folder and into cleaned folder
@@ -29,3 +33,6 @@ def geog_location(url):
         imCrop = im.crop((0, 272, 2880, 1626)) #corrected
         imCrop.save(new_path + new_file, "PNG", quality=100)
         os.remove(old_path+old_file)
+    # create new file folder with images at 2% and 4% the size for analysis
+        imCrop.resize((58,27)).save(resized_path1 + new_file, "PNG")
+        imCrop.resize((115,54)).save(resized_path2 + new_file, "PNG")
